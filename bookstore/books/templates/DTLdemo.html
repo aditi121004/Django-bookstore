@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=h, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> Welcome {{Name}}</h1>
+    <p> login at {{crtdatetime}}</p>
+    <hr>
+    {% with greetings="Goodmorning " %}
+    <h3> Hello and {{greetings}} !!</h3>
+    {% endwith %}
+    <h3> Hello and {{greetings}} !!</h3>
+
+    {% if curhour > 12 and curhour < 16 %}
+    <mark> Good afternoon </mark>
+    {% elif curhour > 16 and curhour < 24 %}
+    {% else %}
+    <h1><mark> Good morning</mark></h1>
+    {% endif %}
+
+    <hr>
+
+    
+   
+
+    {% if password %}
+    <h1> Books Details </h1>
+    <h3> Books Title </h3>
+    <ul>
+        <li>python</li> 
+        <li>js</li> 
+        <li>c++</li> 
+    </ul>
+    <h3> Books Authors</h3>
+    <ol>
+        {% for a in authors %}
+        <li> {{a}}</li>
+        {% endfor %}
+    </ol> 
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th> Sr.No </th>
+                <th> Roll No  </th>
+                <th> Name  </th>
+                <th> Issued Book </th>
+                
+            </tr>
+            
+        </thead>
+        <tbody>
+            {% for k,v in students.items %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{k}}</td>
+                <td>{{v.name}}</td>
+                <td>{{v.issuedbook}}</td>
+                </tr>
+                {% endfor%}
+        </tbody>
+    </table>
+
+        {% else %}
+        <div class="alert alert-danger">
+            <h1> please take password then Books will be visible</h1>
+        </div>
+
+    {% endif %}
+    
+</body>
+</html>
